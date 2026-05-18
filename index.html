@@ -142,10 +142,15 @@
         }
 
         .curiosita-list li::before {
-            content: "🇨🇭";
+            content: url("");
             position: absolute;
             left: 0;
             top: 2px;
+            height: 20px;
+            width: 20px;
+            background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/1280px-Flag_of_Switzerland.svg.png");
+    background-size: contain;   /* Forza la bandiera gigante a rimpicciolirsi dentro i 20x20px */
+    background-repeat: no-repeat;
         }
 
         /* Modi di dire */
@@ -233,12 +238,7 @@
             width: 16px;      /* Spessore del braccio */
             height: 50px;
         }
-        img.emoji {
-          height: 1em;
-          width: 1em;
-          margin: 0 .05em 0 .1em;
-          vertical-align: -0.1em;
-        }
+        
     </style>
 </head>
 <body>
@@ -368,9 +368,5 @@
             (il sito è stato fatto in collaborazione con il fratello di Chiara)
         </div>
     </footer>
-  <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
-  <script>
-    twemoji.parse(document.body);
-  </script>
 </body>
 </html>
