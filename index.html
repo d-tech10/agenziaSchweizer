@@ -233,6 +233,12 @@
             width: 16px;      /* Spessore del braccio */
             height: 50px;
         }
+        img.emoji {
+          height: 1em;
+          width: 1em;
+          margin: 0 .05em 0 .1em;
+          vertical-align: -0.1em;
+        }
     </style>
 </head>
 <body>
@@ -362,6 +368,9 @@
             (il sito è stato fatto in collaborazione con il fratello di Chiara)
         </div>
     </footer>
-
+  <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
+  <script>
+    twemoji.parse(document.body);
+  </script>
 </body>
 </html>
