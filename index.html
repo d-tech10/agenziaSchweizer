@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenzia Schweizer - Viaggi in Svizzera</title>
+    <style>
+        :root {
+            --swiss-red: #DA291C;
+            --swiss-white: #FFFFFF;
+            --dark-gray: #333333;
+            --light-bg: #F9F9F9;
+            --accent-gold: #D4AF37;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        /* Header & Hero */
+        header {
+            background-color: var(--swiss-red);
+            color: var(--swiss-white);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        .cta-box {
+            background-color: var(--swiss-white);
+            color: var(--swiss-red);
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .cta-box a {
+            color: var(--swiss-red);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        /* Container Principale */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+            background: var(--swiss-white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            color: var(--swiss-red);
+            border-bottom: 2px solid var(--swiss-red);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+        }
+
+        /* Griglie e Card per Itinerario e Cibi */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            border: 1px solid #eee;
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--light-bg);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img-placeholder {
+            background-color: #e0e0e0;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-style: italic;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+        }
+
+        /* Curiosità */
+        .curiosita-list {
+            list-style: none;
+        }
+
+        .curiosita-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .curiosita-list li::before {
+            content: "🇨🇭";
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        /* Modi di dire */
+        .idioms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .idiom-box {
+            background: #fff5f5;
+            border-left: 4px solid var(--swiss-red);
+            padding: 15px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .idiom-box em {
+            display: block;
+            font-weight: bold;
+            color: var(--swiss-red);
+            margin-bottom: 5px;
+            font-style: normal;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: #ccc;
+            text-align: center;
+            padding: 40px 30px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 20px;
+        }
+
+        .credits {
+            font-style: italic;
+            color: #999;
+            margin-top: 15px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+        /* Nuova gestione della croce svizzera spessa */
+        .swiss-cross-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .swiss-cross {
+            position: relative;
+            width: 50px;       /* Larghezza totale della croce */
+            height: 50px;      /* Altezza totale della croce */
+        }
+
+        /* Crea i bracci della croce */
+        .swiss-cross::before,
+        .swiss-cross::after {
+            content: "";
+            position: absolute;
+            background-color: var(--swiss-white); /* Colore bianco */
+            border-radius: 2px; /* Arrotonda leggermente gli angoli */
+        }
+
+        /* Braccio Orizzontale (Molto spesso: alto 16px) */
+        .swiss-cross::before {
+            top: 17px;        /* Centra verticalmente: (50px - 16px) / 2 */
+            left: 0;
+            width: 50px;
+            height: 16px;     /* Spessore del braccio */
+        }
+
+        /* Braccio Verticale (Molto spesso: largo 16px) */
+        .swiss-cross::after {
+            top: 0;
+            left: 17px;       /* Centra orizzontalmente: (50px - 16px) / 2 */
+            width: 16px;      /* Spessore del braccio */
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="swiss-cross-container">
+        <div class="swiss-cross"></div>
+        </div>
+        <h1>AGENZIA SCHWEIZER</h1>
+        <p>Tra monti e città, la Svizzera ti stupirà!</p>
+        <div class="cta-box">
+            Chiama ora e prenota il tuo viaggio: <br>
+            <a href="https://www.trex-game.skipser.com/", target="_blank">+375 831 3492</a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section id="itinerario">
+            <h2>L'Itinerario del Viaggio</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="card">
+                    <img src="https://www.metropoli.online/wp-content/uploads/2022/08/1-3.jpeg">
+                    </div>
+                    <div class="card-content">
+                        <h3>1) Kapellbrücke</h3>
+                        <p>Il Kapellbrücke è un antico ponte in legno di Lucerna, costruito tra il 1300 e il 1333. Attraversa il fiume Reuss e unisce la parte vecchia e nuova della città. All'interno si trovano dipinti del Seicento sulla storia di Lucerna. Oggi è uno dei luoghi più visitati della Svizzera.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card">
+                    <img src="https://siviaggia.it/wp-content/uploads/sites/2/2025/08/castello-di-Chillon-Svizzera.jpg", style="width:100%; height:466px; object-fit:cover;">
+                    </div>
+                    <div class="card-content">
+                        <h3>2) Castello di Chillon</h3>
+                        <p>Il Castello di Chillon è una fortezza medievale sulle rive del Lago di Ginevra, vicino a Montreux. È il monumento storico più visitato del paese ed è formato da 25 edifici uniti nel tempo, con torri, cortili, prigioni sotterranee e affreschi del XIV secolo.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/%22Zytglogge%22_tower_in_Berne%2C_Switzerland.jpg/250px-%22Zytglogge%22_tower_in_Berne%2C_Switzerland.jpg", style="width:100%; height:466px; object-fit:cover;">
+                    </div>
+                    <div class="card-content">
+                        <h3>3) Zytglogge</h3>
+                        <p>La Zytglogge (Torre dell'Orologio) era originariamente una torre di guardia costruita nel 1530. È famosa per il suo orologio: pochi minuti prima di ogni ora, attiva un gioco di figure animate che si muove al suono del carillon.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="cibi-tipici">
+            <h2>Cibi Tipici</h2>
+            <div class="grid">
+
+                <div class="card">
+                    <div class="card">
+                    <img src="https://primochef.it/wp-content/uploads/2017/09/SH_fonduta_formaggio.jpg", style="width:100%; height:200px; object-fit:cover;">
+                    </div>
+                    <div class="card-content">
+                        <h3>Fonduta di formaggio</h3>
+                        <p>Le sue origini sono legate alle zone alpine del Canton Friburgo.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card">
+                    <img src="https://gentsrecipes.com/wp-content/uploads/Zuercher-geschnetzeltes-1.jpg", style="width:100%; height:200px; object-fit:cover;">
+                    </div>
+                    <div class="card-content">
+                        <h3>Zürcher Geschnetzeltes</h3>
+                        <p>Letteralmente vuol dire "spezzatino alla zurighese" e, come dice il nome, è originario di Zurigo.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card">
+                    <img src="https://api.swissmilk.ch/wp-content/uploads/2022/04/Aargauer_Rueblitorte_LM201205_60.jpg", style="width:100%; height:200px; object-fit:cover;">
+                    </div>
+                    <div class="card-content">
+                        <h3>Rüeblitorte</h3>
+                        <p>La traduzione è torta di carote svizzera, ed è originaria del cantone svizzero Argovia (Aargau).</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="curiosita">
+            <h2>Curiosità sulla Svizzera</h2>
+            <ul class="curiosita-list">
+                <li>La Svizzera non ha una capitale "ufficiale" nella costituzione. Tutti considerano Berna la capitale, ma tecnicamente è solo la "città federale".</li>
+                <li>In Svizzera esistono più bunker che abitanti. Durante la Guerra Fredda il paese costruì rifugi antiatomici praticamente ovunque.</li>
+                <li>A Zurigo esisteva un parcheggio per tossicodipendenti negli anni '80-'90 chiamato "Needle Park", migliaia di persone si ritrovavano lì per consumare eroina.</li>
+                <li>A Mitholz nel 1947 c'era un deposito militare dentro una montagna dove l'esercito svizzero teneva molte munizioni. Il 19 dicembre scoppiò un incendio che fece esplodere tutto il deposito. L'esplosione distrusse parte del villaggio e uccise alcune persone.</li>
+            </ul>
+        </section>
+
+        <section id="modi-di-dire">
+            <h2>Modi di Dire</h2>
+            <div class="idioms-grid">
+                <div class="idiom-box">
+                    <em>"Na tempestada l'è na sfamada"</em>
+                    Una grandinata è una famata (presagio di miseria).
+                </div>
+                <div class="idiom-box">
+                    <em>"Famantè cufa ün lüff"</em>
+                    Affamato come un lupo.
+                </div>
+                <div class="idiom-box">
+                    <em>"Vuléir tör al canvaa pů largh cu la falc"</em>
+                    Voler cogliere l'andana più larga della falce (azzardare, esagerare).
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Buon ritorno e si spera senza turbolenze!</p>
+        <div class="credits">
+            Fatto da: Potenza Lucio, Morandini Niccolò, Coste Marta, Pogliana Chiara
+            (il sito è stato fatto in collaborazione con il fratello di Chiara)
+        </div>
+    </footer>
+
+</body>
+</html>
